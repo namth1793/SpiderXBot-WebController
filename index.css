@@ -1,0 +1,136 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    background-color: #f8f8f8;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    /* Arrange children side by side */
+    justify-content: space-between;
+    /* Add space between grid-container and features */
+    align-items: flex-start;
+}
+
+.title {
+    font-family: "Londrina Shadow", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    font-size: 70px;
+    font-weight: bold;
+    text-align: left;
+    flex: 1;
+}
+
+.battery {
+    display: flex;
+    align-items: center;
+    text-align: right;
+}
+
+.battery-icon {
+    width: 40px;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 4px;
+    position: relative;
+    margin-right: 5px;
+}
+
+.battery-icon::after {
+    content: '';
+    width: 6px;
+    height: 12px;
+    background: black;
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 2px;
+}
+
+.battery-level {
+    width: "50";
+    height: 100%;
+    background: black;
+}
+
+.battery-percent {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    justify-items: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.btn-direction {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    font-size: 40px;
+    cursor: pointer;
+    border: 2px solid black;
+    background: #ddd;
+    padding: 0 0 8px 2px;
+}
+
+.btn-direction:hover {
+    background: black;
+    color: white;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    ;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.features-play {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 30px;
+    margin: 50px 0 0 100px;
+}
+
+.feature-btn {
+    font-family: "Eater", serif;
+    font-weight: 400;
+    font-style: normal;
+    width: 170px;
+    height: 70px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.feature-btn:hover {
+    border: 6px dashed black;
+}
