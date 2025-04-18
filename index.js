@@ -9,19 +9,23 @@ const TX_CHAR_UUID = '6e400003-b5a3-f393-e0a9-e50e24dcca9e'; // ESP32 sends -> W
 const RX_CHAR_UUID = '6e400002-b5a3-f393-e0a9-e50e24dcca9e'; // Web sends -> ESP32
 
 async function connectBLE() {
-    bleDevice = await navigator.bluetooth.requestDevice({
-        filters: [{
-            namePrefix: "SpiderXBot"
-        }],
-        optionalServices: [NUS_SERVICE_UUID]
-    });
+    try {
+        bleDevice = await navigator.bluetooth.requestDevice({
+            filters: [{
+                namePrefix: "SpiderXBot"
+            }],
+            optionalServices: [NUS_SERVICE_UUID]
+        });
 
-    bleServer = await bleDevice.gatt.connect();
-    uartService = await bleServer.getPrimaryService(NUS_SERVICE_UUID);
-    txChar = await uartService.getCharacteristic(TX_CHAR_UUID);
-    rxChar = await uartService.getCharacteristic(RX_CHAR_UUID);
+        bleServer = await bleDevice.gatt.connect();
+        uartService = await bleServer.getPrimaryService(NUS_SERVICE_UUID);
+        txChar = await uartService.getCharacteristic(TX_CHAR_UUID);
+        rxChar = await uartService.getCharacteristic(RX_CHAR_UUID);
 
-    console.log("Connected to ESP32 over BLE");
+        console.log("Đã kết nối Bluetooth");
+    } catch (error) {
+        console.log("Chưa kết nối Bluetooth");
+    }
 }
 
 async function sendToESP32(text) {
@@ -56,12 +60,12 @@ function moveBackward() {
 }
 
 function voiceCommand() {
-    console.log("Voice Command activated");
+    console.log("Voice Command Activated!");
     sendToESP32("voice");
 }
 
 function obstacleAvoid() {
-    console.log("Obstacle Avoid activated");
+    console.log("Obstacle Avoid Activated!");
     sendToESP32("avoid");
 }
 
@@ -71,9 +75,14 @@ function startProgram() {
     sendToESP32("start program");
 }
 
-function resetProgram() {
-    console.log("Reset Program");
-    sendToESP32("reset program");
+function program() {
+    console.log("Connect to Wifi")
+    sendToESP32("connect wifi")
+}
+
+function reset() {
+    console.log("Reset and Disconnect wifi")
+    sendToESP32("reset")
 }
 
 function loadPage(page) {
@@ -81,6 +90,13 @@ function loadPage(page) {
         .then(response => response.text())
         .then(html => {
             document.getElementById('content').innerHTML = html;
+            // Trigger event contentLoaded sau khi tải xong
+            document.dispatchEvent(new Event('contentLoaded'));
         })
         .catch(error => console.error('Error loading page:', error));
 }
+
+// Khởi tạo editor khi nội dung mới được tải
+document.addEventListener('contentLoaded', function() {
+    initializeEditor();
+});

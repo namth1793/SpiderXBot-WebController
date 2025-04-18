@@ -10,23 +10,43 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Eater&family=Londrina+Shadow&display=swap"
             rel="stylesheet">
-        <link rel="icon" href="./assets/nanobot.png" type="image/x-icon"> <!-- Add this line -->
+        <link rel="icon" href="./assets/nanobot.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
     </head>
 
     <body>
         <div id="content">
-            <div class="container" style="margin-top: 100px;">
-                <h1 class="title">SpiderXBot - Programming !</h1>
-                <div class="features" style="margin-top: 40px;">
-                    <button class="feature-btn" onclick="startProgram()">Start</button>
-                    <button class="feature-btn" onclick="resetProgram()">Reset</button>
-                    <button class="feature-btn" onclick="loadPage('index.html')">Go to Home</button>
+            <div class="container">
+                <h1 class="title" style="margin-top: 20px;">SpiderXBot - Let's Programming</h1>
+                <div class="editor-container">
+                    <textarea id="codeEditor">
+# Write your MicroPython code here
+from machine import Pin
+import time
+
+# Example code for controlling LED
+led = Pin(2, Pin.OUT)
+
+while True:
+    led.value(1)  # Turn LED on
+    time.sleep(1)
+    led.value(0)  # Turn LED off
+    time.sleep(1)
+                    </textarea>
                 </div>
-                <h2 style="margin-top: 50px;">Step 1: Press button "Start" above</h2>
-                <h2 style="margin-top: 0px;">Step 2: Please find and connect to "Cyobot" WiFi</h2>
-                <h2 style="margin-top: 0px;">Step 3: Access to IP address "192.168.4.1"</h2>
-                <h2 style="margin-top: 0px; color: red; ">NOTE: Click "Reset" before Press "Go to Home"</h2>
-                <script src="index.js"></script>
+                <div class="features">
+                    <button class="feature-btn" onclick="uploadCode()">Upload Code</button>
+                    <button class="feature-btn" onclick="modelAI()">AI model</button>
+                    <button class="feature-btn" onclick="loadPage('index.html'); reset()">Go to Home</button>
+                </div>
+                <div id="status" class="status"></div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+        <script src="index.js"></script>
+        <script src="program.js"></script>
     </body>
 
 </html>

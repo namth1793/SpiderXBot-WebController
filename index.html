@@ -11,6 +11,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Eater&family=Londrina+Shadow&display=swap"
             rel="stylesheet">
         <link rel="icon" href="./assets/nanobot.png" type="image/x-icon"> <!-- Add this line -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
     </head>
 
     <body>
@@ -19,14 +21,17 @@
                 <h1 class="title">SpiderXBot - Choose Mode ?</h1>
                 <div class="features" style="margin-top: 50px;">
                     <button class="feature-btn" onclick="loadPage('play.html')">Go to Play</button>
-                    <button class="feature-btn" onclick="loadPage('program.html')">Go to Program</button>
+                    <button class="feature-btn" onclick="loadPage('program.html'); program()">Go to Program</button>
                     <button class="feature-btn" onclick="connectBLE()">Connect BLE</button>
                 </div>
                 <h2 style="margin-top: 50px;">Please Press "Connect BLE" to connect with SpiderXBot</h2>
                 <h2 style="margin-top: 0px; color: red; ">NOTE: After return from Programming, "Connect BLE" again</h2>
             </div>
         </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
         <script src="index.js"></script>
+        <script src="program.js"></script>    
     </body>
 
 </html>
