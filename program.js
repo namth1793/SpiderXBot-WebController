@@ -27,6 +27,7 @@ function showStatus(message, isError = false) {
 }
 
 async function uploadCode() {
+    sendToESP32("upload");
     if (!window.editor) {
         showStatus("Editor not initialized", true);
         return;

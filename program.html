@@ -18,7 +18,7 @@
     <body>
         <div id="content">
             <div class="container">
-                <h1 class="title" style="margin-top: 20px;">SpiderXBot - Let's Programming</h1>
+                <h1 class="title" style="margin-top: 10px;">SpiderXBot - Let's Programming</h1>
                 <div class="editor-container">
                     <textarea id="codeEditor">
 # Write your MicroPython code here
@@ -35,10 +35,12 @@ while True:
     time.sleep(1)
                     </textarea>
                 </div>
+                <h2 style="margin-top: -10px; color: red;">NOTE: after Run code, you need to press Button 0</h2>
                 <div class="features">
-                    <button class="feature-btn" onclick="uploadCode()">Upload Code</button>
+                    <button class="feature-btn" onclick="uploadCode()">Run Code</button>
+                    <button class="feature-btn" onclick="voiceCode()">Voice Code</button>
                     <button class="feature-btn" onclick="modelAI()">AI model</button>
-                    <button class="feature-btn" onclick="loadPage('index.html'); reset()">Go to Home</button>
+                    <button class="feature-btn" onclick="loadPage('index.html'); reset()">Home</button>
                 </div>
                 <div id="status" class="status"></div>
             </div>
